@@ -5,8 +5,17 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatSnackBarModule} from '@angular/material';
+import {
+	MatButtonModule,
+	MatDialogModule,
+	MatFormFieldModule,
+	MatInputModule,
+	MatProgressSpinnerModule,
+	MatSnackBarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ModalLeagueListComponent} from './shared/components/modal-league-list/modal-league-list.component';
+import {ComponentsModule} from './shared/components/components.module';
 
 @NgModule({
 	declarations: [
@@ -23,7 +32,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 		MatInputModule,
 		MatButtonModule,
 		MatSnackBarModule,
-		MatProgressSpinnerModule
+		MatProgressSpinnerModule,
+		MatDialogModule,
+		ComponentsModule
+	],
+	entryComponents: [
+		ModalLeagueListComponent
 	],
 	providers: [],
 	bootstrap: [AppComponent]

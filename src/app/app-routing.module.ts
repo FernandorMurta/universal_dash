@@ -4,8 +4,11 @@ import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
 	{path: 'login', component: LoginComponent},
-	{path: '', pathMatch: 'full', redirectTo: 'login'}
+	{path: '', loadChildren: () => import('./pages/pages.module').then(mod => mod.PagesModule)},
+	{path: '**', redirectTo: 'login'}
 ];
+
+
 
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
