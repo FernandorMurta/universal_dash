@@ -3,9 +3,20 @@ import {CommonModule} from '@angular/common';
 import {ModalLeagueListComponent} from './modal-league-list/modal-league-list.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatDialogModule, MatListModule} from '@angular/material';
+import {
+	MatButtonModule,
+	MatCheckboxModule,
+	MatDialogModule,
+	MatIconModule,
+	MatListModule,
+	MatMenuModule,
+	MatSidenavModule,
+	MatToolbarModule,
+	MatTooltipModule
+} from '@angular/material';
 import {NavbarComponent} from './navbar/navbar.component';
 import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
 	declarations: [ModalLeagueListComponent, NavbarComponent],
@@ -16,7 +27,14 @@ import {RouterModule} from '@angular/router';
 		MatDialogModule,
 		MatButtonModule,
 		MatListModule,
-		RouterModule
+		RouterModule,
+		MatSidenavModule,
+		MatCheckboxModule,
+		MatMenuModule,
+		MatToolbarModule,
+		MatIconModule,
+		HttpClientModule,
+		MatTooltipModule
 	],
 	entryComponents: [
 		ModalLeagueListComponent

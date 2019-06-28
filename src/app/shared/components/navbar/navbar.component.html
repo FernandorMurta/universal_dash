@@ -1,3 +1,31 @@
-<p>
-	navbar works!
-</p>
+<mat-sidenav-container>
+	<mat-sidenav #drawer mode="side"
+				 fixedInViewport
+				 [(opened)]="opened" class="sidenav">
+		<mat-toolbar>Menu</mat-toolbar>
+		<mat-nav-list>
+			<a mat-list-item href="#">Link 1</a>
+			<a mat-list-item href="#">Link 2</a>
+			<a mat-list-item href="#">Link 3</a>
+		</mat-nav-list>
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<mat-toolbar color="primary">
+			<button class="mx-1" mat-icon-button [matTooltip]="!opened ? 'Open Menu' : 'Close Menu'"
+					(click)="drawer.toggle()">
+				<mat-icon svgIcon="menu" aria-label="Menu"></mat-icon>
+			</button>
+			<span class="spacer"></span>
+			<button class="mx-1" mat-icon-button [matTooltip]="'Usuario'">
+				<mat-icon svgIcon="user" aria-label="User"></mat-icon>
+			</button>
+			<button class="mx-1" mat-icon-button [matTooltip]="'Configuracoes'">
+				<mat-icon svgIcon="settings" aria-label="User"></mat-icon>
+			</button>
+			<button class="mx-1" mat-icon-button [matTooltip]="'Sair'">
+				<mat-icon svgIcon="exit" aria-label="Exit"></mat-icon>
+			</button>
+		</mat-toolbar>
+	</mat-sidenav-content>
+</mat-sidenav-container>
