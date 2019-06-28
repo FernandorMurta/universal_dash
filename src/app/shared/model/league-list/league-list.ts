@@ -1,6 +1,7 @@
-export interface LeagueList {
+import {AbstractInterface} from '../abstract/abstract-interface';
+
+export interface LeagueList extends AbstractInterface {
 	name: string;
-	active: boolean;
 	startDate: Date;
 	endDate: Date;
 }

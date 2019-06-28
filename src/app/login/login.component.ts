@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ModalLeagueListComponent} from '../shared/components/modal-league-list/modal-league-list.component';
 import {LeagueList} from '../shared/model/league-list/league-list';
+import {LoginInterface} from '../shared/model/login/login-interface';
 
 @Component({
 	selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 	spinner = false;
 
 	leagueList: Array<LeagueList> = new Array<LeagueList>();
+	loginEntity: LoginInterface;
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -46,6 +48,8 @@ export class LoginComponent implements OnInit {
 			return;
 		}
 
+		this.fillEntity(this.login.value, this.password.value);
+
 		this.mock();
 		this.openDialog();
 	}
@@ -59,7 +63,7 @@ export class LoginComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe(() => {
-			console.log('The dialog was closed');
+			this.resetForm();
 		});
 	}
 
@@ -71,8 +75,23 @@ export class LoginComponent implements OnInit {
 		return this.form.get('password');
 	}
 
+	resetForm(): void {
+		this.login.setValue('');
+		this.password.setValue('');
+
+		this.fillEntity('', '');
+	}
+
+	fillEntity(loginValue: string, passwordValue: string): void {
+		this.loginEntity = {
+			login: loginValue,
+			password: passwordValue
+		};
+	}
+
 	mock() {
 		const list01: LeagueList = {
+			id: 1,
 			name: 'Campeonato 01',
 			active: true,
 			startDate: new Date(),
@@ -80,6 +99,7 @@ export class LoginComponent implements OnInit {
 		};
 
 		const list02: LeagueList = {
+			id: 2,
 			name: 'Campeonato 02',
 			active: false,
 			startDate: new Date(),
@@ -87,6 +107,7 @@ export class LoginComponent implements OnInit {
 		};
 
 		const list03: LeagueList = {
+			id: 3,
 			name: 'Campeonato 03',
 			active: true,
 			startDate: new Date(),
