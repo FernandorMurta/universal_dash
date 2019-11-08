@@ -1,0 +1,62 @@
+<div class="container d-flex justify-content-center flex-column">
+	<div class="row">
+		<div class="col-md-8 col-lg-5 mb-3 mx-auto">
+			<h1> Hidden Create new User</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 mx-auto">
+			<form [formGroup]="form" (submit)="submitLogin()">
+				<div class="card">
+					<div class="card-body">
+						<div class="login-form-container">
+
+							<mat-form-field>
+								<label>
+									<input formControlName="login" matInput placeholder="Login" id="login"
+										   aria-label="Login para Acesso">
+								</label>
+								<mat-hint align="start"
+										  *ngIf=" submitted && (login.errors != null && login.errors.required)"><strong
+									style="color: red;">Campo Login é Obrigatório</strong></mat-hint>
+
+								<mat-hint align="start"
+										  *ngIf="(login.errors != null && login.errors.email)"><strong
+									style="color: red;">Campo Login deve ser um email valido</strong></mat-hint>
+							</mat-form-field>
+
+							<mat-form-field >
+								<label>
+									<input formControlName="password" type="password" matInput placeholder="Senha"
+										   id="password"
+										   aria-label="Senha para a Acesso">
+								</label>
+								<mat-hint align="start"
+										  *ngIf=" submitted && (password.errors != null && password.errors.required)">
+									<strong
+										style="color: red;">Campo Senha é Obrigatório</strong></mat-hint>
+							</mat-form-field>
+
+							<mat-form-field>
+								<label>
+									<input formControlName="token" type="password" matInput placeholder="Token" id="token"
+										   aria-label="Token">
+								</label>
+								<mat-hint align="start"
+										  *ngIf=" submitted && (token.errors != null && token.errors.required)"><strong
+									style="color: red;">Campo Token é Obrigatório</strong></mat-hint>
+							</mat-form-field>
+						</div>
+						<div class="login-submit-container mt-2">
+							<button type="submit" mat-raised-button color="primary"> Enviar</button>
+						</div>
+						<div class="login-progress-container mt-3">
+							<mat-spinner *ngIf="spinner" mode="indeterminate" color="accent"
+										 [diameter]="40"></mat-spinner>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

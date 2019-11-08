@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
 
 	fillEntity(loginValue: string, passwordValue: string): void {
 		this.loginEntity = {
-			login: loginValue,
+			email: loginValue,
 			password: passwordValue
 		};
 	}
