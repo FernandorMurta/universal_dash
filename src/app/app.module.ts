@@ -24,12 +24,14 @@ import {ComponentsModule} from './shared/components/components.module';
 import {LayoutModule} from '@angular/cdk/layout';
 import { NewUserHiddenComponent } from './new-user-hidden/new-user-hidden.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		NewUserHiddenComponent
+		NewUserHiddenComponent,
+		ErrorComponent
 	],
 	imports: [
 		BrowserModule,

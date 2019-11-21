@@ -10,6 +10,8 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class NavbarComponent implements OnInit {
 
 	opened: boolean;
+	user: any;
+	tournament: any;
 
 	constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
 		iconRegistry.addSvgIcon(
@@ -24,8 +26,13 @@ export class NavbarComponent implements OnInit {
 
 		iconRegistry.addSvgIcon('menu',
 			sanitizer.bypassSecurityTrustResourceUrl('assets/icon/menu.svg'));
+
+		iconRegistry.addSvgIcon('login',
+			sanitizer.bypassSecurityTrustResourceUrl('assets/icon/login.svg'));
 	}
 
 	ngOnInit() {
+		this.user = sessionStorage.getItem('user');
+		this.tournament = sessionStorage.getItem('tournament');
 	}
 }

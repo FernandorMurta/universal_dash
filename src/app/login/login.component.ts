@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MatDialog, MatSnackBar} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {ModalLeagueListComponent} from '../shared/components/modal-league-list/modal-league-list.component';
 import {LeagueList} from '../shared/model/league-list/league-list';
 import {LoginInterface} from '../shared/model/login/login-interface';
+import {UserService} from '../shared/services/user/user.service';
+import {SnackbarService} from '../shared/components/snackbar-service/snackbar-service.service';
 
 @Component({
 	selector: 'app-login',
@@ -21,8 +23,9 @@ export class LoginComponent implements OnInit {
 
 	constructor(
 		private formBuilder: FormBuilder,
-		private snackBar: MatSnackBar,
-		public dialog: MatDialog) {
+		private snackBar: SnackbarService,
+		public dialog: MatDialog,
+		private userService: UserService) {
 	}
 
 	ngOnInit() {
@@ -33,9 +36,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	openSnackBarInvalidForm() {
-		this.snackBar.open('Todos os campos Obrigatórios devem ser preenchidos', 'Entendi', {
-			duration: 5 * 1000,
-		});
+		this.snackBar.openSnackBarInvalidRequest('Todos os campos Obrigatórios devem ser preenchidos');
 	}
 
 	submitLogin() {
@@ -50,8 +51,20 @@ export class LoginComponent implements OnInit {
 
 		this.fillEntity(this.login.value, this.password.value);
 
+		this.userService.login(this.loginEntity)
+			.subscribe(res => {
+					this.submitted = false;
+					this.spinner = false;
+					sessionStorage.setItem('user', res.data);
+				},
+				error => {
+					this.snackBar.openSnackBarInvalidRequest(error);
+					this.spinner = false;
+				},
+				() => {
+					this.openDialog();
+				});
 		this.mock();
-		this.openDialog();
 	}
 
 

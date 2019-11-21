@@ -1,5 +1,6 @@
 const absoluteRoutes = {
-	LOGIN: '/login'
+	LOGIN: '/login',
+	HOME: '/pages/home'
 };
 
 export default absoluteRoutes;

@@ -21,4 +21,10 @@ export class UserService extends ServiceClass {
 		return this.http.post(Endpoint.USER.CREATE_USER, user, {params: {key}})
 			.pipe(catchError(this.handleError));
 	}
+
+	public login(user: LoginInterface): Observable<any> {
+		user.password = window.btoa(user.password);
+		return this.http.post(Endpoint.USER.LOGIN, user)
+			.pipe(catchError(this.handleErrorInData));
+	}
 }

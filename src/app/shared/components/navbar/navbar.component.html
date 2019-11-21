@@ -4,9 +4,8 @@
 				 [(opened)]="opened" class="sidenav">
 		<mat-toolbar>Menu</mat-toolbar>
 		<mat-nav-list>
-			<a mat-list-item href="#">Link 1</a>
-			<a mat-list-item href="#">Link 2</a>
-			<a mat-list-item href="#">Link 3</a>
+			<a mat-list-item href="#">Home</a>
+			<a mat-list-item href="#">About</a>
 		</mat-nav-list>
 	</mat-sidenav>
 
@@ -17,16 +16,19 @@
 				<mat-icon svgIcon="menu" aria-label="Menu"></mat-icon>
 			</button>
 			<span class="spacer"></span>
-			<span> Nome do Torneio </span>
+			<span> {{tournament || ''}} </span>
 			<span class="spacer"></span>
-			<button class="mx-1" mat-icon-button [matTooltip]="'Usuario'">
+			<button class="mx-1" mat-icon-button [matTooltip]="'Usuario'" *ngIf="user != null">
 				<mat-icon svgIcon="user" aria-label="User"></mat-icon>
 			</button>
-			<button class="mx-1" mat-icon-button [matTooltip]="'Configuracoes'">
+			<button class="mx-1" mat-icon-button [matTooltip]="'Configuracoes'" *ngIf="user != null">
 				<mat-icon svgIcon="settings" aria-label="User"></mat-icon>
 			</button>
-			<button class="mx-1" mat-icon-button [matTooltip]="'Sair'">
+			<button class="mx-1" mat-icon-button [matTooltip]="'Sair'" *ngIf="user != null">
 				<mat-icon svgIcon="exit" aria-label="Exit"></mat-icon>
+			</button>
+			<button class="mx-1" mat-icon-button [matTooltip]="'Login'" *ngIf="user == null">
+				<mat-icon svgIcon="login" aria-label="Login"></mat-icon>
 			</button>
 		</mat-toolbar>
 	</mat-sidenav-content>

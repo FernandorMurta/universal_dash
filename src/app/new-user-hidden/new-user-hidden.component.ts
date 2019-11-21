@@ -5,6 +5,7 @@ import {UserService} from '../shared/services/user/user.service';
 import {ValidationHelper} from '../shared/util/validation';
 import {SnackbarService} from '../shared/components/snackbar-service/snackbar-service.service';
 import absoluteRoutes from '../shared/constants/absolute-routes';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'app-new-user-hidden',
@@ -63,7 +64,7 @@ export class NewUserHiddenComponent implements OnInit {
 				},
 				() => {
 					this.spinner = false;
-					this.snackBar.openSnackBarSuccess('User Created', absoluteRoutes.LOGIN);
+					this.snackBar.openSnackBarSuccess('User Created', absoluteRoutes.HOME);
 				});
 	}
 
